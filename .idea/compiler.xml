@@ -23,12 +23,14 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="dubbo-api" />
+        <module name="dubbo-common" />
         <module name="dubbo-consumer" />
         <module name="dubbo-privider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dubbo-api" target="1.7" />
+      <module name="dubbo-common" target="1.7" />
       <module name="dubbo-consumer" target="1.7" />
       <module name="dubbo-demo" target="1.7" />
       <module name="dubbo-privider" target="1.7" />

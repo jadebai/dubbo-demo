@@ -12,6 +12,7 @@
         <module>dubbo-api</module>
         <module>dubbo-privider</module>
         <module>dubbo-consumer</module>
+        <module>dubbo-common</module>
     </modules>
 
     <dependencies>
