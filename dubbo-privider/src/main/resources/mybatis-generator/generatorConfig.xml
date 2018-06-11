@@ -5,10 +5,59 @@
 <generatorConfiguration>
     <properties resource="mybatis-generator/generator.properties" />
     <!-- 数据库连接jar路径 -->
-    <classPathEntry location="" />
-    <context id="mySqlTables" targetRuntime="MyBatis3">
-        <javaModelGenerator targetPackage="" targetProject=""></javaModelGenerator>
-        <table tableName="">
+    <classPathEntry location="D:\maven_jar\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar" />
+    <!-- 一个数据库一个context 参数顺序有规定 不可乱-->
+    <context id="mySqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="utf-8"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!-- 注释 -->
+        <commentGenerator>
+            <!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}" password="${jdbc_password}"></jdbcConnection>
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成的实体类地址-->
+        <javaModelGenerator targetPackage="com.baiyu.bean.entity" targetProject="${project}">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true" />
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- map.xml 生成地址-->
+        <sqlMapGenerator targetPackage="mappers" targetProject="${resources}">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 生成的mapper.java 地址 -->
+        <javaClientGenerator targetPackage="com.baiyu.mapper" targetProject="${project}" type="XMLMAPPER">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--<table tableName="address">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <table tableName="receive_address">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+
+        <table tableName="user_info">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+
+        <table tableName="user_login">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+
+        <table tableName="user_login_record">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
     </context>
 </generatorConfiguration>
