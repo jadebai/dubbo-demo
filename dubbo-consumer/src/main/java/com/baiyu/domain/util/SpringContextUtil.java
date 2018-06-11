@@ -1,4 +1,4 @@
-package com.baiyu.domain;
+package com.baiyu.domain.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * FileName: com.baiyu.domain.SpringContextUtil
+ * FileName: com.baiyu.domain.util.SpringContextUtil
  * Author: baiyu
  * Date: 2018/6/9 0009
  * Description: spring 上下文获取 此类必须交给spring管理
