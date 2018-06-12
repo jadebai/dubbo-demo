@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <properties resource="mybatis-generator/generator.properties" />
     <!-- 数据库连接jar路径 -->
-    <classPathEntry location="D:\maven_jar\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar" />
+    <classPathEntry location="${classPathEntry}" />
     <!-- 一个数据库一个context 参数顺序有规定 不可乱-->
     <context id="mySqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="javaFileEncoding" value="utf-8"/>
