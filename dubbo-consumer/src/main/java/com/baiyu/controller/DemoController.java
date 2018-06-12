@@ -4,10 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.baiyu.bean.request.DemoReq;
 import com.baiyu.bean.vo.DemoVo;
 import com.baiyu.service.DemoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +30,8 @@ public class DemoController {
 
     @PostMapping("/demo")
     @ApiOperation(value = "/demo",notes = "demo测试")
-    public Object demo(@RequestBody @ApiParam(name = "demoReq",value = "传入参数",required = true) DemoReq demoReq) {
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "请求成功", response = DemoReq.class) })
+    public Object demo(@RequestBody DemoReq demoReq) {
         DemoVo demoVo = new DemoVo();
         demoVo.setName(demoReq.getName());
         demoVo.setAge(demoReq.getAge());
