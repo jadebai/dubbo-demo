@@ -32,13 +32,13 @@ import java.util.List;
 @PropertySource("classpath:dataSource.properties")
 public class DataSourceConfig {
 
-    @Value("${mybatis.config-location}")
+    @Value("${mybatis.configLocation}")
     protected Resource configLocation;
 
-    @Value("${mybatis.type-aliases-package}")
+    @Value("${mybatis.typeAliasesPackage}")
     protected String typeAliasesPackage;
 
-    @Value("${mybatis.config-location}")
+    @Value("${mybatis.mapperLocations}")
     protected String mapperLocations;
 
     @Bean(name = "dataSource")
