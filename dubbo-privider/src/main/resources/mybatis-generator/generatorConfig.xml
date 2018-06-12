@@ -12,9 +12,12 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
         <!-- 注释 -->
         <commentGenerator>
+            <property name="autoDelimitKeywords" value="true"/>
             <!-- 是否取消注释 -->
-            <property name="suppressAllComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
         </commentGenerator>
         <jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}" password="${jdbc_password}"></jdbcConnection>
         <!-- 类型转换 -->
@@ -22,41 +25,51 @@
             <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <!-- 生成的实体类地址-->
+        <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+            targetPackage     指定生成的model生成所在的包名
+            targetProject     指定在该项目下所在的路径
+        -->
         <javaModelGenerator targetPackage="com.baiyu.bean.entity" targetProject="${project}">
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="true"/>
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
-            <property name="enableSubPackages" value="true" />
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false" />
             <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!-- map.xml 生成地址-->
         <sqlMapGenerator targetPackage="mappers" targetProject="${resources}">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
-            <property name="enableSubPackages" value="true" />
+            <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
-        <!-- 生成的mapper.java 地址 -->
-        <javaClientGenerator targetPackage="com.baiyu.mapper" targetProject="${project}" type="XMLMAPPER">
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+        -->
+        <javaClientGenerator targetPackage="com.baiyu.mapper" targetProject="${project}" type="MIXEDMAPPER">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
-            <property name="enableSubPackages" value="true" />
+            <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-        <!--<table tableName="address">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>-->
-        <!--</table>-->
-
-        <table tableName="receive_address">
+        <table tableName="address" domainObjectName="address">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_info">
+        <table tableName="receive_address" domainObjectName="receiveAddress">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_login">
+        <table tableName="user_info" domainObjectName="userInfo">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_login_record">
+        <table tableName="user_login" domainObjectName="userLogin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+
+        <table tableName="user_login_record" domainObjectName="userLoginRecord" schema="louis">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
     </context>
