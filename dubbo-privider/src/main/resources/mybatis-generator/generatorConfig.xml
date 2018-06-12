@@ -53,23 +53,23 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-        <table tableName="address" domainObjectName="address">
+        <table tableName="address" domainObjectName="Address">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="receive_address" domainObjectName="receiveAddress">
+        <table tableName="receive_address" domainObjectName="ReceiveAddress">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_info" domainObjectName="userInfo">
+        <table tableName="user_info" domainObjectName="UserInfo">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_login" domainObjectName="userLogin">
+        <table tableName="user_login" domainObjectName="UserLogin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
 
-        <table tableName="user_login_record" domainObjectName="userLoginRecord" schema="louis">
+        <table tableName="user_login_record" domainObjectName="UserLoginRecord" schema="louis">
             <generatedKey column="id" sqlStatement="MySql" identity="true"></generatedKey>
         </table>
     </context>
