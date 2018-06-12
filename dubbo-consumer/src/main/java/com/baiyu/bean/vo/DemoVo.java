@@ -12,12 +12,12 @@ import java.io.Serializable;
  * @date: 2018/6/11
  */
 @Data
-//@ApiModel(value = "DemoVo返回",description = "DemoVo返回对象")
+@ApiModel
 public class DemoVo implements Serializable {
     private static final long serialVersionUID = 6110323865963342173L;
 
-    @ApiModelProperty(value = "姓名", name = "name")
+    @ApiModelProperty(value = "返回姓名")
     private String name;
-    @ApiModelProperty(value = "年龄",name = "age")
+    @ApiModelProperty(value = "返回年龄")
     private int age;
 }

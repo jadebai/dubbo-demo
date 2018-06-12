@@ -37,6 +37,6 @@ public class DemoController {
         DemoVo demoVo = new DemoVo();
         demoVo.setName(demoReq.getName());
         demoVo.setAge(demoReq.getAge());
-        return demoVo;
+        return demoReq;
     }
 }
