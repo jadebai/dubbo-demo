@@ -24,17 +24,17 @@ public class DemoController {
     @GetMapping("/sayHello")
     @ApiOperation(value = "/sayHello",notes = "说你好")
     @ApiImplicitParam(name = "name",value = "名称",required = true,dataType = "String")
-    public Object sayHello(String name) {
+    public String sayHello(String name) {
         return demoServiceImpl.sayHello(name);
     }
 
     @PostMapping("/demo")
-    @ApiOperation(value = "/demo",notes = "demo测试")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "请求成功", response = DemoReq.class) })
-    public Object demo(@RequestBody DemoReq demoReq) {
+    @ApiOperation(value = "demo测试",notes = "demo测试")
+    @ApiImplicitParam(value = "请求实体类", name = "demoReq",dataType = "DemoReq",required = true)
+    public DemoVo demo(@RequestBody DemoReq demoReq) {
         DemoVo demoVo = new DemoVo();
         demoVo.setName(demoReq.getName());
         demoVo.setAge(demoReq.getAge());
-        return demoReq;
+        return demoVo;
     }
 }

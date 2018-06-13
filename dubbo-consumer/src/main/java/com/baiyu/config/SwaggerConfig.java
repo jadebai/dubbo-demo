@@ -30,7 +30,7 @@ public class SwaggerConfig {
                 .pathMapping("/")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.baiyu"))
+                .apis(RequestHandlerSelectors.basePackage("com.baiyu.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
