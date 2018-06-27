@@ -8,6 +8,8 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author baiyu
  * @description: DemoController
@@ -25,6 +27,7 @@ public class DemoController {
     @ApiOperation(value = "/sayHello",notes = "说你好")
     @ApiImplicitParam(name = "name",value = "名称",required = true,dataType = "String")
     public String sayHello(String name) {
+        checkNotNull(name,"name is not null");
         return demoServiceImpl.sayHello(name);
     }
 
